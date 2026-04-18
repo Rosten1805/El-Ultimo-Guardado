@@ -1,0 +1,2 @@
+Place a placeholder-cover.webp image here (e.g. a dark 300x400 gradient).
+The normalizer falls back to /images/placeholder-cover.webp when RAWG returns a null cover URL.
