@@ -11,20 +11,20 @@ import type {
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: { params: Promise<{ slug: string }> },
 ) {
-  const { id } = await params;
-  if (!id) {
-    return NextResponse.json({ error: "INVALID_ID" }, { status: 400 });
+  const { slug } = await params;
+  if (!slug) {
+    return NextResponse.json({ error: "INVALID_SLUG" }, { status: 400 });
   }
 
   try {
     const [gameResult, screenshotsResult, storesResult, moviesResult] =
       await Promise.allSettled([
-        rawgFetch<RAWGGame>(`/games/${id}`),
-        rawgFetch<RAWGListResponse<RAWGScreenshot>>(`/games/${id}/screenshots`),
-        rawgFetch<RAWGListResponse<RAWGStore>>(`/games/${id}/stores`),
-        rawgFetch<RAWGListResponse<RAWGMovie>>(`/games/${id}/movies`),
+        rawgFetch<RAWGGame>(`/games/${slug}`),
+        rawgFetch<RAWGListResponse<RAWGScreenshot>>(`/games/${slug}/screenshots`),
+        rawgFetch<RAWGListResponse<RAWGStore>>(`/games/${slug}/stores`),
+        rawgFetch<RAWGListResponse<RAWGMovie>>(`/games/${slug}/movies`),
       ]);
 
     if (gameResult.status === "rejected") {

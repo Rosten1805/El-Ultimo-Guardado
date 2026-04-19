@@ -57,6 +57,7 @@ export interface GameDetailVM extends GameCardVM {
   tags: TagVM[];
   trailers: TrailerVM[];
   soundtracks: SoundtrackVM[];
+  developer: string | null;
 }
 
 export interface TrailerVM {

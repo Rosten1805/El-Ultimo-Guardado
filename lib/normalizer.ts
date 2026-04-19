@@ -115,6 +115,7 @@ export function normalizeGameDetail(
       .map((t) => ({ id: t.id, name: t.name, slug: t.slug })),
     trailers: normalizedTrailers,
     soundtracks: [],
+    developer: raw.developers?.[0]?.name ?? null,
   };
 }
 

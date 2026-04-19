@@ -15,7 +15,15 @@
       "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/docs/data\")",
       "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/docs/devops\")",
       "Read(//c/Users/Cristina/Desktop/PERSONAL-PROJECTS/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/.claude/projects/c--Users-Cristina-Desktop-PERSONAL-PROJECTS-Proyectos-personales--ltimo-Guardado/cea4a391-dcdc-4723-b685-93771ecf3ff6/tool-results/**)",
-      "Bash(npx shadcn@latest init -d)"
+      "Bash(npx shadcn@latest init -d)",
+      "Bash(npx shadcn@latest add card badge input skeleton)",
+      "Bash(mkdir -p 'c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/app/api/games/[slug]/media')",
+      "Bash(cp 'c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/app/api/games/[id]/route.ts' 'c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/app/api/games/[slug]/route.ts')",
+      "Bash(cp 'c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/app/api/games/[id]/media/route.ts' 'c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/app/api/games/[slug]/media/route.ts')",
+      "Bash(curl -s \"http://localhost:3000/games/battletoads\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Cristina\\Desktop\\PERSONAL-PROJECTS\\Proyectos personales\\Último Guardado\\app\\api\\games\\[id]"
     ]
   }
 }

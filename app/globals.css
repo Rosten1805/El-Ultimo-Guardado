@@ -1,14 +1,28 @@
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "ArcadeOut";
+  src: url("/fonts/8-bit Arcade Out.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ArcadeIn";
+  src: url("/fonts/8-bit Arcade In.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --bg-header: #0e0b14;
   --bg-body: #1a1d29;
   --bg-section: #050309;
-  --linearBg: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
+  --linearBg: linear-gradient(rgb(22, 22, 26), rgb(12, 12, 15));
   --white: #f9f9f9;
   --textColor: #aaa;
   --mobile-title: #c8cecf;
@@ -132,7 +146,7 @@ img {
   border-top: 2px solid #2f313d;
   border-bottom: 2px solid #20212b;
   box-shadow: #000c 0 40px 58px -16px, #000000b8 0 30px 22px -10px;
-  transform: scale(1.18);
+  transform: scale(1.05);
   outline: 3px solid var(--white);
   outline-offset: 0;
   z-index: 10;
@@ -163,25 +177,18 @@ img {
 .movie-carousel-item {
   position: relative;
   flex-shrink: 0;
-  width: 140px;
-  height: auto;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-}
-.movie-carousel-item::after {
-  inset: 0;
-  content: "";
-  position: absolute;
-  border-radius: 4px;
-  outline-offset: 4px;
-  transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: opacity 0.2s ease;
 }
 .movie-carousel-item:hover {
-  box-shadow: #000c 0 40px 58px -16px, #000000b8 0 30px 22px -10px;
-  transform: scale(1.05);
+  opacity: 0.92;
 }
-.movie-carousel-item:hover::after {
-  outline: 3px solid rgba(255, 255, 255, 0.8);
+.movie-carousel-item:hover .game-cover-wrapper {
+  outline: 2px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 0px;
+}
+.movie-carousel-item:hover .game-slide-title {
+  opacity: 1 !important;
 }
 .movie-carousel-cover {
   width: 100%;
@@ -312,12 +319,6 @@ img {
     --sidebar-ring: oklch(0.556 0 0);
   }
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
+    @apply border-border;
   }
 }

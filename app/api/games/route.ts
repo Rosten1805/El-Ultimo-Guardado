@@ -7,11 +7,12 @@ import type { GamesPageVM } from "@/types/viewModels";
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
 
-  const platforms = searchParams.get("platforms") ?? undefined;
-  const search = searchParams.get("search") ?? undefined;
-  const ordering = searchParams.get("ordering") ?? "-rating";
-  const page = searchParams.get("page") ?? "1";
-  const pageSize = Math.min(Number(searchParams.get("page_size") ?? "20"), 40);
+  const platforms  = searchParams.get("platforms")  ?? undefined;
+  const search     = searchParams.get("search")     ?? undefined;
+  const ordering   = searchParams.get("ordering")   ?? "-metacritic";
+  const page       = searchParams.get("page")       ?? "1";
+  const metacritic = searchParams.get("metacritic") ?? undefined;
+  const pageSize   = Math.min(Number(searchParams.get("page_size") ?? "40"), 40);
 
   try {
     const data = await rawgFetch<RAWGListResponse<RAWGGame>>("/games", {
@@ -21,10 +22,14 @@ export async function GET(req: NextRequest) {
       page,
       page_size: pageSize,
       exclude_additions: "true",
+      ...(metacritic ? { metacritic } : {}),
     });
 
+    // Filter out games without a cover image to avoid broken slides
+    const validGames = data.results.filter((g) => !!g.background_image);
+
     const response: GamesPageVM = {
-      games: data.results.map(normalizeGame),
+      games: validGames.map(normalizeGame),
       total: data.count,
       hasNext: !!data.next,
       page: Number(page),

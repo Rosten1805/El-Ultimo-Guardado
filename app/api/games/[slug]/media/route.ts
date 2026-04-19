@@ -6,12 +6,12 @@ import type { SoundtrackVM } from "@/types/viewModels";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
+  { params }: { params: Promise<{ slug: string }> },
 ) {
-  const { id } = await params;
+  const { slug } = await params;
 
   try {
-    const movies = await rawgFetch<RAWGListResponse<RAWGMovie>>(`/games/${id}/movies`)
+    const movies = await rawgFetch<RAWGListResponse<RAWGMovie>>(`/games/${slug}/movies`)
       .then((r) => r.results)
       .catch(() => []);
 

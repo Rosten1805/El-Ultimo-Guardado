@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import type { GamesPageVM } from "@/types/viewModels";
@@ -34,6 +34,45 @@ export function Header() {
     router.push(`/games/${slug}`);
   };
 
+  const NAV_LINKS = [
+    {
+      label: "Home",
+      href: "/",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
+      ),
+    },
+    {
+      label: "Géneros",
+      href: "/genres",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="7" height="7" /><rect x="15" y="3" width="7" height="7" /><rect x="15" y="14" width="7" height="7" /><rect x="2" y="14" width="7" height="7" />
+        </svg>
+      ),
+    },
+    {
+      label: "Noticias",
+      href: "/news",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" /><path d="M18 14h-8" /><path d="M15 18h-5" /><path d="M10 6h8v4h-8V6z" />
+        </svg>
+      ),
+    },
+    {
+      label: "Favoritos",
+      href: "/favorites",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width={15} height={15} viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <header
       style={{
@@ -53,26 +92,68 @@ export function Header() {
       }}
     >
       {/* Left: logo + nav */}
-      <div style={{ display: "flex", alignItems: "center", gap: 0, width: "fit-content", justifyContent: "flex-start" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
         <Link
           href="/"
           aria-label="Go to the homepage"
           className="nav-animate"
           style={{ "--delay": "80ms" } as React.CSSProperties}
-          data-style="logo-link"
         >
-          <Image
-            src="/slides/romSphere-logo.CRNmsPp5_H3RxL.webp"
-            alt="romSphere"
-            width={150}
-            height={41}
-            priority
-            style={{ display: "block", width: "150px", height: "auto", marginRight: "2rem" }}
-          />
+          <span
+            style={{
+              fontFamily: "ArcadeIn, monospace",
+              fontSize: "2.6rem",
+              color: "#f9f9f9",
+              letterSpacing: "0.04em",
+              lineHeight: 1.15,
+              display: "block",
+            }}
+          >
+            <span style={{ display: "block" }}>El Último</span>
+            <span style={{ display: "block" }}>Guardado</span>
+          </span>
         </Link>
+
+        {/* Nav links */}
+        <nav style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+          {NAV_LINKS.map((link, i) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="nav-animate"
+              style={{
+                "--delay": `${120 + i * 60}ms`,
+                display: "flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.4rem 0.75rem",
+                borderRadius: "0.5rem",
+                color: "var(--textColor)",
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                transition: "color 0.2s, background 0.2s",
+              } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = "var(--white)";
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.06)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = "var(--textColor)";
+                (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+              }}
+            >
+              {link.icon}
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
 
-      {/* Right: search */}
+      {/* Right: search + login */}
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
       <div
         className="nav-animate"
         style={{ "--delay": "280ms", position: "relative" } as React.CSSProperties}
@@ -196,6 +277,41 @@ export function Header() {
             )}
           </div>
         )}
+      </div>
+
+      {/* Login icon */}
+      <button
+        aria-label="Iniciar sesión"
+        className="nav-animate"
+        style={{
+          "--delay": "340ms",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "36px",
+          height: "36px",
+          borderRadius: "50%",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(255,255,255,0.05)",
+          cursor: "pointer",
+          color: "var(--textColor)",
+          transition: "border-color 0.2s, color 0.2s",
+          flexShrink: 0,
+        } as React.CSSProperties}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.5)";
+          (e.currentTarget as HTMLButtonElement).style.color = "var(--white)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.15)";
+          (e.currentTarget as HTMLButtonElement).style.color = "var(--textColor)";
+        }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width={17} height={17} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+        </svg>
+      </button>
       </div>
     </header>
   );

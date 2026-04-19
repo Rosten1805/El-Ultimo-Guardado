@@ -89,15 +89,15 @@ export function HeroSlider() {
   return (
     <section
       aria-label="Featured games"
-      style={{ marginBlockStart: 0, overflow: "hidden", position: "relative", width: "100%" }}
+      style={{ marginBlockStart: 0, position: "relative", width: "100%", paddingInline: "4rem", paddingBottom: "1.75rem" }}
     >
       {/* Embla viewport */}
       <div
         ref={emblaRef}
-        style={{ width: "100%", padding: "0 4rem 1.75rem", overflow: "hidden" }}
+        style={{ width: "100%", overflow: "hidden" }}
       >
         {/* Embla container */}
-        <div style={{ display: "flex", height: "450px" }}>
+        <div style={{ display: "flex", height: "clamp(360px, calc(100vh - 360px), 580px)" }}>
           {SLIDES.map((slide) => (
             <div
               key={slide.slug}
@@ -120,7 +120,8 @@ export function HeroSlider() {
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="100vw"
-                priority={slide.slug === SLIDES[0].slug}
+                priority
+                loading="eager"
               />
               {/* Title logo overlay */}
               <div
@@ -214,7 +215,7 @@ function SliderBtn({ side, onClick }: { side: "left" | "right"; onClick: () => v
       style={{
         position: "absolute",
         top: "calc(50% - 0.875rem)",
-        [side]: "4.5rem",
+        [side]: "4.75rem",
         transform: "translateY(-50%)",
         background: "none",
         border: "none",

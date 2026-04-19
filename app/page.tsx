@@ -1,8 +1,9 @@
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { HeroSlider } from "@/components/home/HeroSlider";
 import { CategoryCards } from "@/components/home/CategoryCards";
-import { CollectionCarousel } from "@/components/home/PlatformSection";
-import { TIKEN_COLLECTIONS } from "@/lib/tikenCollections";
+import { PlatformSection } from "@/components/home/PlatformSection";
+import { CONSOLE_SECTIONS } from "@/lib/consoleSections";
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
       {/* Background fixed image */}
       <div
         style={{
-          backgroundImage: "url(/background.png)",
+          backgroundImage: "url(/back-background-web.webp)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center center",
@@ -50,13 +51,15 @@ export default function HomePage() {
           <CategoryCards />
         </section>
 
-        {/* Game collections */}
+        {/* Game sections by console — data from RAWG */}
         <section className="collections">
-          {TIKEN_COLLECTIONS.map((collection) => (
-            <CollectionCarousel key={collection.title} collection={collection as any} />
+          {CONSOLE_SECTIONS.map((section) => (
+            <PlatformSection key={section.id} section={section} />
           ))}
         </section>
       </main>
+
+      <Footer />
     </>
   );
 }

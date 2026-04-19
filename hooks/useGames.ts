@@ -59,15 +59,15 @@ export function useGames(params: UseGamesParams = {}) {
   });
 }
 
-export function useGameDetail(id: string | number) {
+export function useGameDetail(slug: string) {
   return useQuery<GameDetailVM>({
-    queryKey: ["game-detail", id],
+    queryKey: ["game-detail", slug],
     queryFn: async () => {
-      const res = await fetch(`/api/games/${id}`);
+      const res = await fetch(`/api/games/${slug}`);
       if (!res.ok) throw new Error("Game not found");
       return res.json();
     },
-    enabled: !!id,
+    enabled: !!slug,
   });
 }
 

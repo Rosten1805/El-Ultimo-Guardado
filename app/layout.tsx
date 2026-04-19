@@ -9,12 +9,12 @@ const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "romSphere ⦿ load your childhood",
+  title: "El Último Guardado",
   description:
-    "A seamless, modern platform to experience your favorite retro games directly in the browser.",
+    "Tu biblioteca de videojuegos retro. Explora, descubre y revive los clásicos que marcaron una era.",
   openGraph: {
-    title: "romSphere ⦿ load your childhood",
-    description: "A seamless, modern platform to experience your favorite retro games directly in the browser.",
+    title: "El Último Guardado",
+    description: "Tu biblioteca de videojuegos retro. Explora, descubre y revive los clásicos que marcaron una era.",
     type: "website",
   },
 };

@@ -56,6 +56,7 @@ export interface RAWGGame {
   platforms: RAWGPlatformRef[] | null;
   tags: RAWGTag[] | null;
   short_screenshots?: RAWGScreenshot[];
+  developers?: { id: number; name: string; slug: string }[];
 }
 
 export interface RAWGListResponse<T> {
