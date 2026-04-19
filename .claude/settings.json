@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/gamelibrary/app/api/games/[id]/media\")",
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/gamelibrary/app/games/[slug]\")",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const a = require\\('c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/gamelibrary/node_modules/embla-carousel-autoplay'\\); console.log\\(Object.keys\\(a\\)\\);\")",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const p=JSON.parse\\(d\\); console.log\\('main:', p.main, 'module:', p.module, 'exports:', JSON.stringify\\(p.exports\\).slice\\(0,200\\)\\);\")",
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/agents\")",
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/docs/architecture\")",
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/docs/planning\")",
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/docs/data\")",
+      "Bash(mkdir -p \"c:/Users/Cristina/Desktop/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/docs/devops\")",
+      "Read(//c/Users/Cristina/Desktop/PERSONAL-PROJECTS/PERSONAL-PROJECTS/Proyectos personales/Último Guardado/.claude/projects/c--Users-Cristina-Desktop-PERSONAL-PROJECTS-Proyectos-personales--ltimo-Guardado/cea4a391-dcdc-4723-b685-93771ecf3ff6/tool-results/**)",
+      "Bash(npx shadcn@latest init -d)"
+    ]
+  }
+}

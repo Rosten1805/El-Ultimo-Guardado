@@ -27,3 +27,6 @@ next-env.d.ts
 # OS
 .DS_Store
 Thumbs.db
+
+# Visual reference build (not source code)
+reference/
